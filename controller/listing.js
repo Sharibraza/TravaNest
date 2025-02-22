@@ -27,18 +27,23 @@ module.exports.showListings = async (req, res) => {
     if (!listing) {
         req.flash("error", " Listing you requested for, Does not Exists!");
         res.redirect("/listings");
-    }
+    }   
+    let response = await geocodingClient.forwardGeocode({
+      query: listing.location,
+      limit: 1
+    })
+    .send();
+    listing.geometry = response.body.features[0].geometry;
     res.render("listings/show.ejs", { listing });
 };
 
 module.exports.createListing = async (req, res, next) => {
 
-    // let response = await geoCodingClient.forwardGeocode({
-    //     query: req.body.listing.location,
-    //     limit: 1
-    // })
-    //     .send();
-    // res.send("done!");
+    let response = await geoCodingClient.forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1
+    })
+        .send();
 
     let url = req.file.path;
     let filename = req.file.filename;
