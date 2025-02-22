@@ -1,5 +1,3 @@
-let mapToken= process.env.MAP_TOKEN ;
-let coordinates=  JSON.stringify(listing)  ;
 mapboxgl.accessToken = mapToken ;
 const map = new mapboxgl.Map({
     container: 'map',
