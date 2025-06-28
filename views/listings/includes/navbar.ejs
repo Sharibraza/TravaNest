@@ -1,15 +1,16 @@
 <style>
-  .search-btn{
-    background-color:  #fe424d ;
+  .search-btn {
+    background-color: #fe424d;
     color: #fff;
     border-radius: 100% !important;
 
-    &:hover{
-      background-color:  #fe424d ;
+    &:hover {
+      background-color: #fe424d;
       color: #fff;
     }
   }
-  .search-inp{
+
+  .search-inp {
     border-radius: 25px;
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
@@ -24,7 +25,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings">TravaNest </a>
       </div>
       <div class="navbar-nav ms-auto">
         <form class="d-flex " role="search">
@@ -33,14 +34,14 @@
         </form>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        <a class="nav-link" href="/listings/new">Become a Host</a>
         <% if(!currUser) {%>
           <a class="nav-link" href="/signup"><b>Sign up</b></a>
           <a class="nav-link" href="/login"><b>Login</b> </a>
-        <% } %>
-        <% if(currUser) {%>
-           <a class="nav-link" href="/logout">Logout</a>
-        <% } %>   
+          <% } %>
+            <% if(currUser) {%>
+              <a class="nav-link" href="/logout">Logout</a>
+              <% } %>
       </div>
     </div>
   </div>

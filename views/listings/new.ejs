@@ -6,7 +6,7 @@
                 <h3>Create a new Listing</h3>
                 <form method="POST" action="/listings" class="needs-validation" novalidate
                     enctype="multipart/form-data">
-                    <div class="mb-3">
+                    <div class=" mt-4 mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" name="listing[title]" placeholder="Enter title" required
                             class="form-control">
@@ -14,20 +14,20 @@
                         <div class="invalid-feedback"> Please enter a Title </div>
                     </div>
 
-                    <div>
+                    <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <textarea name="listing[description]" placeholder="Enter description" required
                             class="form-control"></textarea>
                         <div class="invalid-feedback"> Please enter a short discription </div>
                     </div>
 
-                    <div>
+                    <div class="mb-3">
                         <label for="image" class="form-label">Upload Listing Image </label>
                         <input type="file" name="listing[image]" class="form-control" required>
                         <div class="invalid-feedback"> Please enter a image </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" >
                         <div class="col-md-4">
                             <div>
                                 <label for="price" class="form-label">Price</label>
@@ -35,7 +35,7 @@
                                 <div class="invalid-feedback"> Please enter a valid price </div>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 mb-3">
                             <div>
                                 <label for="country" class="form-label">Country</label>
                                 <input type="text" name="listing[country]" placeholder="Enter country" required
@@ -45,15 +45,36 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
                         <input type="text" name="listing[location]" placeholder="Enter location" required
                             class="form-control">
                         <div class="invalid-feedback"> Please enter your current Location</div>
                     </div>
+                    <div class="mb-3">
+                        <label for="category" >Category</label>
+                        <Select id="category" name="listing[category]" >
+                            <option value="Trending">Trending</option>
+                            <option value="Rooms">Rooms</option>
+                            <option value="IconicCites">Iconic Cites</option>
+                            <option value="Mountains">Mountains</option>
+                            <option value="Castles">Castles</option>
+                            <option value="AmazingPools">Amazing pools</option>
+                            <option value="camping">camping</option>
+                            <option value="Farms">Farms</option>
+                            <option value="TreeHouses">Tree Houses</option>
+                            <option value="BeachFront">BeachFront</option>
+                            <option value="LakeFront">LakeFront</option>
+                            <option value="Tropical">Tropical</option>
+                            <option value="HistoricalHomes">Historical Homes</option>
+                            <option value="Beach">Beach</option>
+                            <option value="Cabins">Cabins</option>
+                        </Select>
+                        <div class="invalid-feedback"> Please Select category </div>
+                    </div>
 
-                    <br><br>
-                    <button class="btn btn-dark add-btn mt-3">Add</button>
+                    <br> <br>
+                    <button class="btn btn-dark add-btn mt-3 mb-4">Add</button>
                 </form>
             </div>
         </div>

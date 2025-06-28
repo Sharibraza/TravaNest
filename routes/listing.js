@@ -13,16 +13,18 @@ router
   .route("/",)
   .get(wrapAsync(listingController.index))     // index route
   .post(
-    isLoggedIn,
+    // isLoggedIn,
     upload.single('listing[image]'),
-    validateListing,
+    // validateListing,
     wrapAsync(listingController.createListing)    // Create route
   );
+
 
 //  new Listing route
 router.get(
   "/new",
-  isLoggedIn, listingController.renderNewForm
+  // isLoggedIn, 
+  listingController.renderNewForm
 );
 
 
@@ -30,22 +32,22 @@ router
   .route("/:id")
   .get(wrapAsync(listingController.showListings))  // Showing  Listing route
   .put(
-    isLoggedIn,
-    isOwner,
+    // isLoggedIn,
+    // isOwner,
     upload.single('listing[image]'),               //Updating listing route
-    validateListing,
+    // validateListing,
     wrapAsync(listingController.updatelistings))
   .delete(
-    isLoggedIn,                                       //Deleting listing route
-    isOwner,
+    // isLoggedIn,                                       //Deleting listing route
+    // isOwner,
     wrapAsync(listingController.destroyListing));
 
 
 // Editing Listing route
 router.get(
   "/:id/edit",
-  isLoggedIn,
-  isOwner,
+  // isLoggedIn,
+  // isOwner,
   wrapAsync(listingController.renderEditForm)
 );
 

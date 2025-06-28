@@ -5,8 +5,13 @@ const mapToken = process.env.MAP_TOKEN;
 const geoCodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
-    let allListing = await Listing.find({});
-    res.render("listings/index.ejs", { allListing });
+    let listing;
+    if (req.query.category) {
+        listing = await Listing.find({category:req.query.category});
+    }else{
+        listing = await Listing.find({});
+    }
+    res.render("listings/index.ejs", { listing });
 };
 
 
@@ -27,7 +32,7 @@ module.exports.showListings = async (req, res) => {
     if (!listing) {
         req.flash("error", " Listing you requested for, Does not Exists!");
         res.redirect("/listings");
-    }   
+    }
 
     res.render("listings/show.ejs", { listing });
 };
@@ -39,15 +44,16 @@ module.exports.createListing = async (req, res, next) => {
         limit: 1
     })
         .send();
-
     let url = req.file.path;
     let filename = req.file.filename;
     let newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
+    newListing.category = req.body.listing.category;
     newListing.image = { url, filename };
-    // newListing.geometry = response.body.features[0].geometry;
+    newListing.geometry = response.body.features[0].geometry;
     let savedListings = await newListing.save();
     req.flash("success", "New Listing Created");
+    console.log(savedListings);
     res.redirect("/listings");
 };
 

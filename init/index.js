@@ -1,17 +1,21 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
-const Listing = require("../models/listing.js");
+const User = require("../models/user.js");
 
-main().then(() => { console.log("connected"); }).catch(err => console.log(err));
 
+main().then(() => { console.log("Connected to DB"); }).catch(err => console.log(err));
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/Wanderlust');
+  await mongoose.connect("mongodb+srv://sharib:sharib@cluster0.sk7v9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 }
 
 const initDB = async () => {
-  await Listing.deleteMany({});
-  initData.data= initData.data.map( (obj) => ({...obj, owner: "672f14410e3841154b820785" }));
-  await Listing.insertMany(initData.data);
+  // await Listing.deleteMany({});
+  initData.data = initData.data.map((obj) => ({ ...obj }));
+  await User.insertMany(initData.data);
   console.log("data was reinitialized");
+
 };
 initDB();
+
+// <% if( currUser && listing.owner._id.equals(currUser._id)) { %>
+// <% } %>
